@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import { FAQ } from "../types/faq.type";
+import IFaq from "../types/IFaq.type";
 
 interface IProps {
-  data: FAQ[];
+  data: IFaq[];
 }
 
 const FAQS: NextPage<IProps> = () => {
