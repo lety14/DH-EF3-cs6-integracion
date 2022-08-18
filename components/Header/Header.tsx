@@ -1,18 +1,23 @@
 import React, { FC } from "react";
+import styles from "../../styles/Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header: FC = () => {
+  const router = useRouter();
+  const currentRoute = router.pathname;
+
   return (
-    <header>
+    <header className={styles.header}>
       <Link href="./">
-        <Image src="/logo.png" width={45} height={45} alt="logo" />
+        <p className={styles.logo}>DEVS RED</p>
       </Link>
-      <ul>
-        <li>
+      <ul className={styles.navbar}>
+        <li className={currentRoute === "/" ? styles.active : ""}>
           <Link href="./">Home</Link>
         </li>
-        <li>
+        <li className={currentRoute === "/faqs" ? styles.active : ""}>
           <Link href="./faqs">Preguntas Frecuentes</Link>
         </li>
       </ul>
