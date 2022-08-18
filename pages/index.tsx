@@ -1,7 +1,9 @@
 import type { NextPage } from "next";
+import styles from "../styles/Home.module.css";
 import Head from "next/head";
-import Image from "next/image";
+import Card from "../components/Card";
 import IUser from "../types/IUser.type";
+import Image from "next/image";
 
 interface IProps {
   data: { results: IUser[] };
@@ -9,42 +11,34 @@ interface IProps {
 
 const Home: NextPage<IProps> = ({ data: { results } }) => {
   const renderResults = () =>
-    results.map((result) => (
-      <div key={result.login.username}>
-        <picture>
-          <Image
-            src={result.picture.medium}
-            alt={result.name.first}
-            layout="fixed"
-            width={100}
-            height={100}
-          />
-        </picture>
-        <h2>{`${result.name.first} ${result.name.last}`}</h2>
-        <p>{result.login.username}</p>
-        <p>{result.email}</p>
-      </div>
-    ));
+    results.map((result) => <Card data={result} key={result.login.username} />);
 
   return (
-    <div>
+    <div className={styles.container}>
       <Head>
-        <title>RandomUsers</title>
+        <title>DEVS RED</title>
         <meta
           name="description"
-          content="Una web en donde podrás conectar con otras personas de forma rápida y sencilla"
+          content="Una web en donde podrás conectar con otros desarrolladores de forma rápida y sencilla"
         />
       </Head>
-      <main>
-        <h1>RandomUsers</h1>
-        <div>{renderResults()}</div>
+      <main className={styles.main}>
+        <div className={styles.titleContainer}>
+          <h1 className={styles.title}>DEVS RED</h1>
+          <p className={styles.subtitle}>
+            -- Una red para contactar con otros desarrolladores --
+          </p>
+        </div>
+        <section className={styles.section}>
+          <div className={styles.grid}>{renderResults()}</div>
+        </section>
       </main>
     </div>
   );
 };
 
 export async function getServerSideProps() {
-  const res = await fetch(`https://randomuser.me/api/?results=10`);
+  const res = await fetch(`https://randomuser.me/api/?results=12`);
   const data = await res.json();
 
   return {

@@ -26,10 +26,10 @@ const FAQS: NextPage<IProps> = ({ data }) => {
         <title>Preguntas Frecuentes</title>
         <meta name="description" content="Preguntas frecuentes del sitio" />
       </Head>
-      <section className={styles.section}>
+      <main className={styles.main}>
         <h1 className={styles.title}>Preguntas frecuentes</h1>
         <div className={styles.containerQuestions}>{renderDataFaqs()}</div>
-      </section>
+      </main>
     </div>
   );
 };
