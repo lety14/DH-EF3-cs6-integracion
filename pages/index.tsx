@@ -3,7 +3,6 @@ import styles from "../styles/Home.module.css";
 import Head from "next/head";
 import Card from "../components/Card";
 import IUser from "../types/IUser.type";
-import Image from "next/image";
 
 interface IProps {
   data: { results: IUser[] };
@@ -16,7 +15,7 @@ const Home: NextPage<IProps> = ({ data: { results } }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>DEVS RED</title>
+        <title className={styles.title}>DEVS RED</title>
         <meta
           name="description"
           content="Una web en donde podrás conectar con otros desarrolladores de forma rápida y sencilla"

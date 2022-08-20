@@ -13,13 +13,15 @@ const Card: NextPage<IProps> = ({ data }) => {
     <div className={styles.container}>
       <div className={styles.imageContainer}>
         <picture>
-          <Image
-            src={data.picture.medium}
-            alt={data.name.first}
-            layout="fixed"
-            width={250}
-            height={250}
-          />
+          <div className={styles.image}>
+            <Image
+              src={data.picture.medium}
+              alt={data.name.first}
+              layout="fixed"
+              width={100}
+              height={100}
+            />
+          </div>
         </picture>
         <h2
           className={styles.name}
